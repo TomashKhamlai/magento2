@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ /**
+  * Copyright © Magento, Inc. All rights reserved.
+  * See COPYING.txt for license details.
+  */
+-->
+
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="StorefrontVerifyWishListLayout">
+        <annotations>
+            <title value="Elements on Wish List page must be visible"/>
+            <description value="Elements on Wish List page must be visible including page title and messages"/>
+            <severity value="MINOR"/>
+            <group value="wishlist"/>
+        </annotations>
+        <before>
+            <createData entity="Simple_US_Customer" stepKey="customer"/>
+        </before>
+        <after>
+            <deleteData createDataKey="customer" stepKey="deleteCustomer"/>
+        </after>
+        <!-- Sign in as customer -->
+        <actionGroup ref="LoginToStorefrontActionGroup" stepKey="loginToStorefrontAccount">
+            <argument name="Customer" value="$$customer$$"/>
+        </actionGroup>
+        <amOnPage url="{{StorefrontCustomerWishlistPage.url}}" stepKey="amOnWishList"/>
+        <actionGroup ref="StorefrontAssertCustomerWishlistIsEmpty" stepKey="checkMessageAndTitle"/>
+    </test>
+</tests>

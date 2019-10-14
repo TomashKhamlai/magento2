@@ -134,5 +134,6 @@
     <actionGroup name="StorefrontAssertCustomerWishlistIsEmpty">
         <dontSeeElement selector="{{StorefrontCustomerWishlistProductSection.pager}}" stepKey="checkThatPagerIsAbsent"/>
         <see selector="{{StorefrontCustomerWishlistProductSection.wishlistEmpty}}" userInput="You have no items in your wish list." stepKey="checkNoItemsMessage"/>
+        <see selector="{{StorefrontCustomerWishlistSection.pageTitle}}" userInput="My Wish List" stepKey="checkPageTitleVisible" />
     </actionGroup>
 </actionGroups>
